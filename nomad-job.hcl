@@ -11,7 +11,7 @@ advertise {
 
 server {
   enabled          = true
-  bootstrap_expect = 3
+  bootstrap_expect = 1
 }
 
 client {
@@ -23,14 +23,14 @@ client {
 }
 
 consul {
-  address = "1.2.3.4:8500"
+  address = "127.0.0.1:8500"
 }
 
 vault {
   enabled          = true
-  ca_path          = "/etc/certs/ca"
-  cert_file        = "/var/certs/vault.crt"
-  key_file         = "/var/certs/vault.key"
-  address          = "https://vault.service.consul:8200"
+  #ca_path          = "/etc/certs/ca"
+  #cert_file        = "/var/certs/vault.crt"
+  #key_file         = "/var/certs/vault.key"
+  address          = "http://127.0.0.1:8200"
   create_from_role = "nomad-cluster"
 }
