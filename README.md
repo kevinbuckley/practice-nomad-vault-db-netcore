@@ -19,5 +19,9 @@ sudo VAULT_TOKEN=$(vault token create -policy nomad-server -period 72h -orphan |
 
 ```
 cd app
-docker build -t app ./app/.
+docker build -t app .
 docker run -d -p 8080:80 --name myapp app
+
+
+nomad job plan app.nomad
+nomad job run app.nomad
