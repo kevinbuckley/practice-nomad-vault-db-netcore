@@ -11,10 +11,13 @@ consul agent -dev
 vault server -dev
 
 # setup vault policies and roles
-vault policy write nomad-server nomad-server-policy.hcl    # policy for what nomad can do with vault
-vault write /auth/token/roles/nomad-cluster @nomad-cluster-role.json # creates the role for nomad to use
+vault policy write nomad-server ./nomad-vault/nomad-server-policy.hcl    # policy for what nomad can do with vault
+vault write /auth/token/roles/nomad-cluster @nomad-vault/nomad-cluster-role.json # creates the role for nomad to use
 
 # create a token for nomad to use and start nomad agent
-sudo VAULT_TOKEN=$(vault token create -policy nomad-server -period 72h -orphan | grep -w "token" |  sed 's/.* //') nomad agent -config nomad-server.hcl -config nomad-client.hcl
+sudo VAULT_TOKEN=$(vault token create -policy nomad-server -period 72h -orphan | grep -w "token" |  sed 's/.* //') nomad agent -config nomad-vault/nomad-server.hcl -config nomad-vault/nomad-client.hcl
 
 ```
+cd app
+docker build -t app ./app/.
+docker run -d -p 8080:80 --name myapp app
