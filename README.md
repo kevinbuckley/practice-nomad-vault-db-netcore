@@ -1,4 +1,4 @@
-currently the hackiest, hack that ever hacked.  integrating nomad & vault
+currently the hackiest, hack that ever hacked.  integrating nomad & vault 
 
 ```bash
 # run consul server
