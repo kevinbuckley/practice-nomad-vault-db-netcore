@@ -1,4 +1,4 @@
-## Nomad job getting credentials from vault
+## nomad job getting credentials from vault
 
 currently the hackiest, hack that ever hacked.  integrating nomad & vault 
 
