@@ -1,4 +1,4 @@
-data_dir = "/etc/nomad.d"
+data_dir = "/mount/"
 bind_addr = "0.0.0.0" # the default
 
 server {

@@ -1,15 +1,14 @@
-job "apps" {
+job "app" {
   datacenters = ["dc1"]
 
-  group "example" {
+  group "appgroup" {
     task "server" {
       driver = "docker"
 
       config {
-        image = "hashicorp/http-echo"
-        args = [
-          "-listen", ":5678",
-          "-text", "hello world",
+        image = "kbux/kb-dotnet-core-simple:latest"
+        args = [ 
+          "-p", "8000:80"
         ]
       }
 
@@ -17,7 +16,7 @@ job "apps" {
         network {
           mbits = 10
           port "http" {
-            static = "5678"
+            static = "80"
           }
         }
       }
